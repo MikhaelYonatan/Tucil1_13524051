@@ -44,18 +44,31 @@ void probSolver(vector<string>& board) {
     int found = 0;
     bool solved = false;
 
-    int iteration = 0;
+    long long iteration = 0;
     auto start = chrono::high_resolution_clock::now();
+    auto lastUpdate = start;
+    const int UPDATE_INTERVAL_MS = 25;
     while (found < N && !solved) {
         iteration++;
+        auto now = chrono::high_resolution_clock::now();
+        double elapsed = chrono::duration_cast<chrono::milliseconds>(now - lastUpdate).count();
+
+        if (elapsed >= UPDATE_INTERVAL_MS) {
+            cout << "==== LIVE UPDATE ====" << endl;
+            cout << "Iterasi ke: " << iteration << endl;
+            cout << "Queens ditempatkan: " << found << "/" << N << endl;
+            cout << "Sedang mengecek: (" << rowIt << ", " << colIt << ")" << endl;
+            
+            updateBoard(board, ans);
+            printBoard(board);
+            
+            lastUpdate = now;
+        }
+
         if (colIt < N && rowIt < N) {
             if (isValid(rowIt, colIt, board[rowIt][colIt], N, ans)) {
                 found++;
                 ans[rowIt] = {colIt, board[rowIt][colIt]};
-
-                cout << "Meletakkan queen-" << found << " di " << "(" << rowIt << ", " << colIt << ")" << endl;
-                updateBoard(board, ans);
-                printBoard(board);
             }
 
             if (found == N) {
@@ -72,10 +85,6 @@ void probSolver(vector<string>& board) {
                 colIt = 0;
             }
             else {
-
-                cout << "Tidak ada tempat yang tepat untuk queen-" << found + 1 << endl;
-                cout << "Kembali ke queen-" << found << endl;
-                
                 found--;
                 int lastQueenRow = rowIt - 1;
                 while (lastQueenRow >= 0 && ans[lastQueenRow].first == -1) {
