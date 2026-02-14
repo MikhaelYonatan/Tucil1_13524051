@@ -44,15 +44,18 @@ void probSolver(vector<string>& board) {
     int found = 0;
     bool solved = false;
 
-    long long iteration = 0;
+    int iteration = 0;
     auto start = chrono::high_resolution_clock::now();
     while (found < N && !solved) {
         iteration++;
-
         if (colIt < N && rowIt < N) {
             if (isValid(rowIt, colIt, board[rowIt][colIt], N, ans)) {
                 found++;
                 ans[rowIt] = {colIt, board[rowIt][colIt]};
+
+                cout << "Meletakkan queen-" << found << " di " << "(" << rowIt << ", " << colIt << ")" << endl;
+                updateBoard(board, ans);
+                printBoard(board);
             }
 
             if (found == N) {
@@ -69,6 +72,10 @@ void probSolver(vector<string>& board) {
                 colIt = 0;
             }
             else {
+
+                cout << "Tidak ada tempat yang tepat untuk queen-" << found + 1 << endl;
+                cout << "Kembali ke queen-" << found << endl;
+                
                 found--;
                 int lastQueenRow = rowIt - 1;
                 while (lastQueenRow >= 0 && ans[lastQueenRow].first == -1) {
