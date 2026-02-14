@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <chrono>
 using namespace std;
 
 bool isValid(int x, int y, char color, int N, vector<pair<int, char>>& ans);

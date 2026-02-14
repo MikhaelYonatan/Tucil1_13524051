@@ -44,7 +44,11 @@ void probSolver(vector<string>& board) {
     int found = 0;
     bool solved = false;
 
+    long long iteration = 0;
+    auto start = chrono::high_resolution_clock::now();
     while (found < N && !solved) {
+        iteration++;
+
         if (colIt < N && rowIt < N) {
             if (isValid(rowIt, colIt, board[rowIt][colIt], N, ans)) {
                 found++;
@@ -83,6 +87,8 @@ void probSolver(vector<string>& board) {
             }
         }        
     }
+    auto end = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
 
     if (solved) {
         cout << "INI JAWABANNYA!" << endl;
@@ -92,4 +98,6 @@ void probSolver(vector<string>& board) {
     else {
         cout << "PAPAN INI MUSTAHIL DISELESAIKAN, HIKS :(" << endl;
     }
+    cout << "Jumlah iterasi yang dilakukan: " << iteration << endl;
+    cout << "Waktu Eksekusi: " << duration.count() << " ms" << endl;
 }
