@@ -1,6 +1,7 @@
 #include "fileproc.h"
+#include "queen.h"
 
-vector<string> loadBoard(string filename) {
+vector<string> loadBoardTxt(string filename) {
     vector<string> board;
     string line;
     ifstream file(filename);

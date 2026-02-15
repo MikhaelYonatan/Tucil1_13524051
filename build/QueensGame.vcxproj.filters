@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Aab_105 College\Semester 4\Strategi Algoritma\Tugas Kecil 1\Tucil1_13524051\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Aab_105 College\Semester 4\Strategi Algoritma\Tugas Kecil 1\Tucil1_13524051\src\fileproc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Aab_105 College\Semester 4\Strategi Algoritma\Tugas Kecil 1\Tucil1_13524051\src\imgproc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Aab_105 College\Semester 4\Strategi Algoritma\Tugas Kecil 1\Tucil1_13524051\src\queen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Aab_105 College\Semester 4\Strategi Algoritma\Tugas Kecil 1\Tucil1_13524051\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{AAAC5EC1-E87C-3E7E-A86D-78B1E8C29581}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

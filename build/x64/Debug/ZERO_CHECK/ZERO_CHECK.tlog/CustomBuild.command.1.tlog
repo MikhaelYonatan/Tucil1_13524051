@@ -1,0 +1,10 @@
+^C:\AAB_105 COLLEGE\SEMESTER 4\STRATEGI ALGORITMA\TUGAS KECIL 1\TUCIL1_13524051\BUILD\CMAKEFILES\BA9E0E7DD59EA39A2A098175FDD4209F\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Aab_105 College/Semester 4/Strategi Algoritma/Tugas Kecil 1/Tucil1_13524051" "-BC:/Aab_105 College/Semester 4/Strategi Algoritma/Tugas Kecil 1/Tucil1_13524051/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Aab_105 College/Semester 4/Strategi Algoritma/Tugas Kecil 1/Tucil1_13524051/build/TucilStima1.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

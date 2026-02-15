@@ -7,6 +7,6 @@
 #include <string>
 using namespace std;
 
-vector<string> loadBoard(string filename);
+vector<string> loadBoardTxt(string filename);
 
 #endif
