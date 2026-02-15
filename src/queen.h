@@ -1,3 +1,6 @@
+#ifndef QUEEN_H
+#define QUEEN_H
+
 #include <iostream>
 #include <vector>
 #include <chrono>
@@ -10,3 +13,5 @@ void updateBoard(vector<string>& board, vector<pair<int, char>>& ans);
 void printBoard(vector<string>& board);
 
 void probSolver(vector<string>& board);
+
+#endif

@@ -1,4 +1,4 @@
-#include "file.h"
+#include "fileproc.h"
 
 vector<string> loadBoard(string filename) {
     vector<string> board;
