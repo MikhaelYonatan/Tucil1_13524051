@@ -112,6 +112,7 @@ void probSolver(vector<string>& board, vector<pair<int, char>>& ans) {
     }
     else {
         cout << "PAPAN INI MUSTAHIL DISELESAIKAN, HIKS :(" << endl;
+        exit(1);
     }
     cout << "Jumlah iterasi yang dilakukan: " << iteration << endl;
     cout << "Waktu Eksekusi: " << duration.count() << " ms" << endl;
