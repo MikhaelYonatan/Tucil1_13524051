@@ -11,4 +11,6 @@ struct Color {
 
 vector<string> processImage(string imagePath, int N);
 
+void saveBoardPng(vector<string>& board, vector<pair<int, char>>& ans, string filename);
+
 #endif

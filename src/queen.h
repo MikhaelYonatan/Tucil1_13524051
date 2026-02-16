@@ -12,6 +12,6 @@ void updateBoard(vector<string>& board, vector<pair<int, char>>& ans);
 
 void printBoard(vector<string>& board);
 
-void probSolver(vector<string>& board);
+void probSolver(vector<string>& board, vector<pair<int, char>>& ans);
 
 #endif

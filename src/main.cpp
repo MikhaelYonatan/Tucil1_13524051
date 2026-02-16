@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <filesystem>
 #include "fileproc.h"
 #include "imgproc.h"
 #include "queen.h" 
@@ -29,7 +30,7 @@ int main() {
         cout << "Mendeteksi file gambar: " << filePath << endl;
         cout << "Masukkan ukuran grid N (misal 10): ";
         cin >> N;
-        board = processImage(filePath, N); 
+        board = processImage(filePath, N);
     } 
     else {
         cout << "Mendeteksi file teks: " << filePath << endl;
@@ -42,6 +43,43 @@ int main() {
     }
 
     printBoard(board);
-    probSolver(board); 
-    return 0;
+    N = board.size();
+    vector<pair<int, char>> ans(N, {-1, '*'});
+    probSolver(board, ans);
+    cout << endl; 
+    
+    char saveTxt, savePng;
+    string outputName;
+
+    while (true) {
+        cout << "Apakah anda ingin menyimpan solusi .txt? (Y/n): ";
+        cin >> saveTxt;
+        if (saveTxt == 'Y' || saveTxt == 'y') {
+            filesystem::path inputPath(filename);
+            outputName = "solTxt_" + inputPath.stem().string() + ".txt";
+            saveBoardTxt(board, "test/" + outputName); 
+            break;
+        } else if (saveTxt == 'n' || saveTxt == 'N') {
+            break;
+        } else {
+            cout << "Input tidak valid! Masukkan Y atau n." << endl;
+        }
+    }
+
+    while (true) {
+        cout << "Apakah anda ingin menyimpan solusi .png? (Y/n): ";
+        cin >> savePng;
+        if (savePng == 'Y' || savePng == 'y') {
+            filesystem::path inputPath(filename);
+            outputName = "solPng_" + inputPath.stem().string() + ".png";
+            saveBoardPng(board, ans, "test/" + outputName);
+            break;
+        } else if (savePng == 'n' || savePng == 'N') {
+            break;
+        } else {
+            cout << "Input tidak valid! Masukkan Y atau n." << endl;
+        }
+    }
+
+    cout << "Program selesai!" << endl;
 }

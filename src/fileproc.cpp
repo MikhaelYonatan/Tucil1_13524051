@@ -42,8 +42,37 @@ vector<string> loadBoardTxt(string filename) {
             cerr << "Ukuran papan tidak valid di baris-" << i + 1 << endl;
             exit(1);
         }
+        for (int j = 0; j < col; j++) {
+            char c = board[i][j];
+
+            if (c < 'A' || c > 'Z') {
+                cerr << "Error: Karakter tidak valid ditemukan di baris " << i + 1 << ", kolom " << j + 1 << endl;
+                cerr << "Papan hanya boleh berisi Huruf Kapital (A-Z) tanpa spasi." << endl;
+                exit(1);
+            }
+        }
     }
 
     cout << "Berhasil membaca papan berukuran " << row << "x" << col << endl;
     return board;
+}
+
+void saveBoardTxt(vector<string>& board, string filename) {
+    ofstream file(filename);
+
+    if (!file.is_open()) {
+        cerr << "Error: Tidak bisa membuat file " << filename << endl;
+        return;
+    }
+
+    int N = board.size();
+    for (int i = 0 ; i < N ; i++) {
+        for (int j = 0 ; j < N ; j++) {
+            file << board[i][j];
+        }
+        if (i < N - 1) file << '\n';
+    }
+
+    file.close();
+    cout << "Berhasil menyimpan solusi teks ke: " << filename << endl;
 }

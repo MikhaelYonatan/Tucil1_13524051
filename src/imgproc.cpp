@@ -55,3 +55,67 @@ vector<string> processImage(string imagePath, int N) {
     }
     return board;
 }
+
+void overlayImage(Mat& background, const Mat& foreground, Point location) {
+    if (location.x + foreground.cols > background.cols || location.y + foreground.rows > background.rows) return;
+
+    for (int y = 0; y < foreground.rows; y++) {
+        for (int x = 0; x < foreground.cols; x++) {
+            Vec4b fgPixel = foreground.at<Vec4b>(y, x);
+            
+            if (fgPixel[3] > 0) { 
+                background.at<Vec3b>(location.y + y, location.x + x) = Vec3b(fgPixel[0], fgPixel[1], fgPixel[2]);
+            }
+        }
+    }
+}
+
+void saveBoardPng(vector<string>& board, vector<pair<int, char>>& ans, string filename) {
+    int N = board.size();
+    int cellSize = 60;
+    int imgSize = N * cellSize;
+
+    Mat queenIcon = imread("src/queen.png", IMREAD_UNCHANGED); 
+
+    if (queenIcon.empty()) {
+        cerr << "Error: Icon ratu tidak ditemukan!" << endl;
+    } else {
+        resize(queenIcon, queenIcon, Size(cellSize * 0.8, cellSize * 0.8));
+    }
+
+    Mat resultImg(imgSize, imgSize, CV_8UC3, Scalar(255, 255, 255));
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            char c = board[i][j];
+            bool isQueen = false;
+
+            if (c == '#') {
+                isQueen = true;
+                c = ans[i].second; 
+            }
+
+            int r = (c * 70) % 255; 
+            int g = (c * 150) % 255;
+            int b = (c * 200) % 255;
+            Scalar bgColor(b, g, r);
+
+            Point topLeft(j * cellSize, i * cellSize);
+            Point bottomRight((j + 1) * cellSize, (i + 1) * cellSize);
+
+            rectangle(resultImg, topLeft, bottomRight, bgColor, FILLED);
+
+            rectangle(resultImg, topLeft, bottomRight, Scalar(0, 0, 0), 2);
+
+            if (isQueen && !queenIcon.empty()) {
+                int iconX = topLeft.x + (cellSize - queenIcon.cols) / 2;
+                int iconY = topLeft.y + (cellSize - queenIcon.rows) / 2;
+                
+                overlayImage(resultImg, queenIcon, Point(iconX, iconY));
+            }
+        }
+    }
+
+    imwrite(filename, resultImg);
+    cout << "Gambar solusi disimpan ke: " << filename << endl;
+}

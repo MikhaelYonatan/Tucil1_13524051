@@ -36,9 +36,8 @@ void printBoard(vector<string>& board) {
     cout << endl;
 }
 
-void probSolver(vector<string>& board) {
+void probSolver(vector<string>& board, vector<pair<int, char>>& ans) {
     int N = board.size();
-    vector<pair<int, char>> ans(N, {-1, '*'});
     int rowIt = 0;
     int colIt = 0;
     int found = 0;

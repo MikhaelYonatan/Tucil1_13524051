@@ -9,4 +9,6 @@ using namespace std;
 
 vector<string> loadBoardTxt(string filename);
 
+void saveBoardTxt(vector<string>& board, string filename);
+
 #endif
