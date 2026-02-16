@@ -18,8 +18,6 @@ TUCIL1_13524051/
 │   ├── QueensGame.exe
 │   └── QueensGame.pdb
 |
-├── build/
-|
 ├── doc/
 |
 ├── src/
