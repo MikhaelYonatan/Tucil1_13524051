@@ -1,3 +1,0 @@
-C:/Aab_105 College/Semester 4/Strategi Algoritma/Tugas Kecil 1/Tucil1_13524051/build/CMakeFiles/QueensGame.dir
-C:/Aab_105 College/Semester 4/Strategi Algoritma/Tugas Kecil 1/Tucil1_13524051/build/CMakeFiles/ALL_BUILD.dir
-C:/Aab_105 College/Semester 4/Strategi Algoritma/Tugas Kecil 1/Tucil1_13524051/build/CMakeFiles/ZERO_CHECK.dir
